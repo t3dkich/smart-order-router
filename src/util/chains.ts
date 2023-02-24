@@ -17,6 +17,7 @@ export enum ChainId {
   GNOSIS = 100,
   MOONBEAM = 1284,
   MAISTESTSUBNET = 43214913,
+  SUSONO = 13812,
 }
 
 // WIP: Gnosis, Moonbeam
@@ -35,6 +36,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO_ALFAJORES,
   ChainId.CELO,
   ChainId.MAISTESTSUBNET,
+  ChainId.SUSONO,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -102,6 +104,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.MOONBEAM;
     case 43214913:
       return ChainId.MAISTESTSUBNET
+    case 13812:
+      return ChainId.SUSONO
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -123,7 +127,8 @@ export enum ChainName {
   CELO_ALFAJORES = 'celo-alfajores',
   GNOSIS = 'gnosis-mainnet',
   MOONBEAM = 'moonbeam-mainnet',
-  MAISTESTSUBNET = 'maistestsubnet'
+  MAISTESTSUBNET = 'maistestsubnet',
+  SUSONO = 'susono'
 }
 
 export enum NativeCurrencyName {
@@ -133,7 +138,8 @@ export enum NativeCurrencyName {
   CELO = 'CELO',
   GNOSIS = 'XDAI',
   MOONBEAM = 'GLMR',
-  MAISTESTSUBNET = 'MAI'
+  MAISTESTSUBNET = 'MAI',
+  SUSONO = 'OPN'
 }
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MAINNET]: [
@@ -191,6 +197,7 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.GNOSIS]: ['XDAI'],
   [ChainId.MOONBEAM]: ['GLMR'],
   [ChainId.MAISTESTSUBNET]: ['MAI'],
+  [ChainId.SUSONO]: ['OPN'],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -210,6 +217,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.GNOSIS]: NativeCurrencyName.GNOSIS,
   [ChainId.MOONBEAM]: NativeCurrencyName.MOONBEAM,
   [ChainId.MAISTESTSUBNET]: NativeCurrencyName.MAISTESTSUBNET,
+  [ChainId.SUSONO]: NativeCurrencyName.SUSONO,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -246,6 +254,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.MOONBEAM;
     case 43214913:
       return ChainName.MAISTESTSUBNET;
+    case 13812:
+      return ChainName.SUSONO;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -285,6 +295,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_CELO_ALFAJORES!;
     case ChainId.MAISTESTSUBNET:
       return process.env.JSON_RPC_PROVIDER_MAISTESTSUBNET!;
+    case ChainId.SUSONO:
+      return process.env.JSON_RPC_PROVIDER_SUSONO!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -404,6 +416,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WETH',
     'Wrapped Ether'
+  ),
+  [ChainId.SUSONO]: new Token(
+    ChainId.SUSONO,
+    '0x286BFBBe97B65E537bB107679087493b549D7564',
+    18,
+    'pTHB',
+    'PurchasableTHB'
   ),
 };
 
