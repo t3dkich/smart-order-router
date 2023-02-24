@@ -164,4 +164,11 @@ export const WETH9: {
     'WETH',
     'Wrapped Ether'
   ),
+  [ChainId.SUSONO]: new Token(
+    ChainId.SUSONO,
+    '0x286BFBBe97B65E537bB107679087493b549D7564',
+    18,
+    'pTHB',
+    'PurchasableTHB'
+  ),
 };

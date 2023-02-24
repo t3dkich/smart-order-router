@@ -165,6 +165,9 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     T2_MAISTESTSUBNET,
     T3_MAISTESTSUBNET
   ],
+  [ChainId.SUSONO]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.SUSONO],
+  ],
 };
 
 /**
